@@ -2,7 +2,7 @@
       <div class="repos">
       <div class="more">
         <span class="likes">
-            <span>{{repos.watchers}}</span>
+          <span>{{repos.watchers}}</span>
           <img class="Vector" src="../assets/Vector.png" />
         </span>
         <span class="language">{{repos.language}}</span>
@@ -14,15 +14,30 @@
           <div class="tag" v-if='repos.tag'>{{repos.tag}}</div>
         </div>
       </div>
-      <button class="btn-like" >subscribe</button>
+      <button  
+        @click="chageLike(repos.id)"
+        :class="{
+          'btn_add_list':!repos.like,
+          'btn_remove_list':repos.like
+        }" >{{btnText}}</button>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'BlockRepos',
-  props: ['repos']
-}
+  export default {
+    data: function() {
+        return {
+            btnText: 'subcribe'
+        }
+    },
+    name: 'BlockRepos',
+    props: [ 'repos' ],
+    methods: {
+        chageLike(id) {
+        this.$store.commit('changeLike', id);
+        }
+    }
+  }
 </script>
 
 <style scoped>
@@ -82,6 +97,7 @@ export default {
     border:none;
     margin: auto;
     text-transform: uppercase;
+    font-size: 1.1rem;
 }
 .btn_remove_list{
     background-color: red;

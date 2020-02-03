@@ -16,13 +16,13 @@ export default {
 } 
 </script>
 <style scoped>
-.change_panel{
-    display: flex;
-    width: 80%;
-    justify-content: flex-end;
-    margin: 2rem auto 0;
-}
-img{
-    margin-left: 30px;
-}
+  .change_panel{
+      display: flex;
+      width: 80%;
+      justify-content: flex-end;
+      margin: 2rem auto 0;
+  }
+  img{
+      margin-left: 30px;
+  }
 </style>

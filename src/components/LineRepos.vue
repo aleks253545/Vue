@@ -25,7 +25,7 @@ export default {
     name: 'LineRepos',
     props: ['repos'],
     methods: {
-        chageLike(id){
+        chageLike(id) {
             this.$store.commit('changeLike',id);
         }
     }

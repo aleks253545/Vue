@@ -1,7 +1,7 @@
-<template > 
-  <div class="block_found" v-if="!repositories.length">
-        <h2 class="title_found">No Result found</h2>
-        <span class="fext_found">select other parameters and try again</span>
+<template> 
+  <div class="block_found" v-if="!myList.length">
+        <h2 class="title_found">your list does not contain repositories</h2>
+        <span class="fext_found">please add repositories to work </span>
   </div>
   <div class="repos_container" v-else-if="display==='line'">
     <LineRepos   v-for='repos in myList' v-bind:key='repos.id' :repos='repos'/>
