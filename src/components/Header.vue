@@ -1,9 +1,10 @@
 <template >
   <header class="header_page">
-    <img src={logo} class="header_logo"/>
+    <img src="../assets/logo.png" class="header_logo"/>
     <ul class="header_list">
-      <li class="header_list_item">Search</li>
-      <li class="header_list_item">My list</li>
+      <router-link to="/search"> <li class="header_list_item">Search</li> </router-link>
+      
+      <router-link to="/my-list"> <li class="header_list_item">My list</li> </router-link>
     </ul>
   </header>
 </template>

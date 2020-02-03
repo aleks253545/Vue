@@ -1,29 +1,34 @@
 <template>
   <div class="repos">
-      <input id="rops.item.id" class="checkbox" type="checkbox"/>
-      <label class="label"><div class="mark" /></label>
+      <input :id="repos.id" class="checkbox" type="checkbox"  v-model="repos.like" @click="chageLike(repos.id)"/>
+      <label class="label" :for="repos.id" ><div class="mark" /></label>
       <div class="info">
-        <h3 class="name">sasas</h3>
-        <span class="subname">dsdsd</span>
-        <div class="tags">
-          <div class="tag">aaaaaa</div>
-          {tag}
+        <h3 class="name">{{repos.name}}</h3>
+        <span class="subname">{{repos.description}}</span>
+        <div class="tags" >
+            <div class="tag" v-if='repos.language'>{{repos.language}}</div>
+          <div class="tag" v-if='repos.tag'>{{repos.tag}}</div>
         </div>
       </div>
       <div class="more">
         <span class="likes">
-          dsdsds
-          {' '}
-          <img src={Vector} class="Vector"/>
+          <span>{{repos.watchers}}</span>
+          <img src="../assets/Vector.png" class="Vector"/>
         </span>
-        <span class="language" >dsds</span>
+        <span class="language" >{{repos.language}}</span>
       </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'LineRepos'
+    name: 'LineRepos',
+    props: ['repos'],
+    methods: {
+        chageLike(id){
+            this.$store.commit('changeLike',id);
+        }
+    }
 }
 </script>
 <style scoped>
@@ -59,10 +64,14 @@ input:checked + .label>.mark{
     background-color: blue;
 }
 .info{
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin: 0 auto 0 2rem;
 }
 .name{
-    margin: 0;
+    margin: 0 auto 0 0;
     font-size: 1.8rem;
     color: blue;
 }
@@ -79,6 +88,7 @@ input:checked + .label>.mark{
 }
 .subname{
     font-weight: 500;
+    text-align: start;
 }
 .more{
     display: flex;
@@ -87,5 +97,9 @@ input:checked + .label>.mark{
 }
 .Vector{
     margin-left: 3px;
+}
+.likes{
+    display: flex;
+    align-items: flex-end;
 }
 </style>

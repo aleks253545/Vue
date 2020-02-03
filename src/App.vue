@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <Header ></Header>
-    <SearchBox/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-import SearchBox from './components/SearchBox'
+import store from './store/store'
 
 export default {
   name: 'app',
   components: {
     Header,
-    SearchBox
-  }
+  },
+  store
 }
 </script>
 
@@ -25,6 +25,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -2,26 +2,26 @@
       <div class="repos">
       <div class="more">
         <span class="likes">
-          {props.item.watchers}
-          {' '}
-          <img class="Vector" />
+            <span>{{repos.watchers}}</span>
+          <img class="Vector" src="../assets/Vector.png" />
         </span>
-        <span class="language">asasasa</span>
+        <span class="language">{{repos.language}}</span>
       </div>
       <div class="info">
-        <h3 class="name">sasasa</h3>
-        <span class="subname">sasasas</span>
+        <h3 class="name">{{repos.name}}</h3>
+        <span class="subname">{{repos.description}}</span>
         <div class="tags">
-          <div class="tag">asasa</div>
+          <div class="tag" v-if='repos.tag'>{{repos.tag}}</div>
         </div>
       </div>
-      <button class="like" ></button>
+      <button class="btn-like" >subscribe</button>
     </div>
 </template>
 
 <script>
 export default {
   name: 'BlockRepos',
+  props: ['repos']
 }
 </script>
 
@@ -43,12 +43,13 @@ export default {
 }
 
 .info{
-    margin: 2rem auto 0 2rem;
+    margin: 2rem auto 0 0;
 }
 .name{
-    margin: 0;
+    margin: 0 0 10px;
     font-size: 1.8rem;
     color: blue;
+    text-align: start;
 }
 .tags{
     display: flex;
@@ -63,6 +64,7 @@ export default {
 }
 .subname{
     font-weight: 500;
+    text-align: start;
 }
 .more{
     display: flex;
@@ -83,5 +85,18 @@ export default {
 }
 .btn_remove_list{
     background-color: red;
+}
+.btn-like{
+    width: 45%;
+    height: 3rem;
+    color: white;
+    background-color: blue;
+    border: none;
+    margin:auto auto 2rem;
+    font-size: 1.1rem;
+}
+.likes{
+    display: flex;
+    align-items: flex-end;
 }
 </style>

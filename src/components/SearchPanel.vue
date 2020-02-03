@@ -3,8 +3,8 @@
       <select class="search_panel_select">
         <option value="grapefruit">Repositories</option>
       </select>
-      <select class="search_panel_select" onChange={onChangeSelect} ref={selectRef}>
-        <option value="JavaScript">JavaScript</option>
+      <select class="search_panel_select" v-model="activeLanguage">
+        <option value="JavaScript" >JavaScript</option>
         <option value="css">css</option>
         <option value="Html">Html</option>
         <option value="php">php</option>
@@ -16,14 +16,33 @@
         <option value="go">go</option>
         <option value="haskel">haskel</option>
       </select>
-      <input type="text" class="search_panel_input" ref={inputRef} value={props.filterTag} onChange={onChangeInput} />
-      <button class="search_panel_button" onClick={downloadRepos}>Search</button>
+      <input type="text" class="search_panel_input" v-model="tag"/>
+      <button class="search_panel_button" @click="downloadRepos({tag, activeLanguage})" >Search</button>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            tag: '',
+            activeLanguage: 'JavaScript'
+        }
+    },
+    methods: {
+        downloadRepos(param){
+            this.$store.dispatch({
+                type:'downloadRepositories',
+                param
+            })
+        }
+    }
+}
+</script>
 <style scoped>
 .search_panel{
     width: 80%;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     display: flex;
     justify-content: space-between;
 }

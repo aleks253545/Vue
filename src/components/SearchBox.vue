@@ -19,10 +19,4 @@ export default {
 }
 </script>
 <style scoped>
-.search_box{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 </style>

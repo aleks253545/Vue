@@ -4,10 +4,10 @@
         <span class="fext_found">select other parameters and try again</span>
   </div>
   <div class="repos_container" v-else-if="display==='line'">
-    <LineRepos   v-for='repos in repositories.slice(0,viewIndex)' v-bind:key='repos.id' :repos='repos'/>
+    <LineRepos   v-for='repos in myList' v-bind:key='repos.id' :repos='repos'/>
   </div>
   <div class="repos_container" v-else-if="display==='block'">
-    <BlockRepos   v-for='repos in repositories.slice(0,viewIndex)' v-bind:key='repos.id' :repos='repos'/>
+    <BlockRepos   v-for='repos in myList' v-bind:key='repos.id' :repos='repos'/>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
 import LineRepos from './LineRepos'
 import BlockRepos from './BlockRepos'
 export default {
-  name: 'ReposContainer',
+  name: 'MyListContainer',
   components: {
       LineRepos,
       BlockRepos
@@ -24,8 +24,8 @@ export default {
     display() {
       return this.$store.state.display
     },
-    repositories() {
-      return this.$store.state.repositories
+    myList() {
+      return this.$store.state.myList
     },
     viewIndex() {
       return this.$store.state.viewIndex

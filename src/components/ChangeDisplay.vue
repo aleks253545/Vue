@@ -1,13 +1,18 @@
 <template >
   <div class="change_panel">
-      <img src=""  />
-      <img src=""  />
+      <img src="../assets/line.png"  @click="chageDisplay('line')" />
+      <img src="../assets/tile.png"  @click="chageDisplay('block')" />
     </div>
 </template>
 
 <script>
 export default {
-  name: 'ChangeDisplay'
+  name: 'ChangeDisplay',
+  methods: {
+    chageDisplay(display) {
+      this.$store.commit('setDisplay',display);
+    }
+  }
 } 
 </script>
 <style scoped>
@@ -15,7 +20,7 @@ export default {
     display: flex;
     width: 80%;
     justify-content: flex-end;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
 }
 img{
     margin-left: 30px;
